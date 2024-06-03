@@ -7,6 +7,7 @@ import upload_icon from '../../assets/upload.png'
 import more_icon from '../../assets/more.png'
 import notification_icon from '../../assets/notification.png'
 import profile_icon from '../../assets/jack.png'
+import { Link } from 'react-router-dom';
 
 const Navbar = ({setSidebar}) => {
   return (
@@ -16,7 +17,7 @@ const Navbar = ({setSidebar}) => {
           ()=>setSidebar(prev=>prev===false?true:false
           )} src= {menu_icon} alt=''
         />
-        <img className='logo' src= {logo} alt=''/>
+       <Link to='/'><img className='logo' src= {logo} alt=''/></Link>
      </div>
      <div className='nav-middle flex-div'>
       <div className="search-box flex-div">
