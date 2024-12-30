@@ -1,0 +1,140 @@
+Documentation w/c shows steps followed to create this app.
+steps:
+*******
+  1. Initializing app using React + Vite
+  *************************************
+    Create any folder and open that folder in Vscode.
+
+    Open terminal and write: 
+      - npm create vite@latest your_folder_name
+          following a given procedure
+      - npm cd your_folder_name
+      - npm install
+    Clean un-necessary files or remove default code from files
+      eg: files like:index.css, app.jsx, index.html, app.css & public folder
+        - index.css: clean all content and add some common css element
+        - index.html: update the title, change the icon  
+  2. Creating folders (folder structures)
+  ********************************************
+    Inside src folder create:
+      1. components folder
+        Inside this folders we gonna create d/t react components which is used to render as needed.
+          Inside components folder create folders like:
+            - Header
+            - PlayVideo
+            - Recommended
+            - Sidebar
+            - VideoList
+          Inside each of these folder create files with extension .jsx and .css (react components). 
+        Note: we can create files with the same corresponding folder name and files name must start by capital letter (specially jsx file)
+      2. Pages folder
+        this is used to manages our pages using react route
+        Inside this folder create folders like
+          - Home
+          - Video
+        Inside each folder create files with extension .jsx and .css Note: Mostly files inside this folder (pages folder) is used as a parent for react components (child) & render it .
+          eg: Home.jsx: renders Sidebar.jsx & VideoList.jsx
+      3. utils folder
+        Inside this folder create Javascript files like:
+          - axios.js
+          - request.js
+        these files are used to setup baseurl and different paths which we gonna reuse it in our react components.  
+  3. Installing packages (dependencies) 
+  ************************************
+    From  https://www.npmjs.com/
+    open terminal and install the following packages:
+    1. npm i axios
+      This is a JavaScript library that allows us to send HTTP requests to servers and receive responses. 
+      It's commonly used in web development to fetch data from APIs  and interact with servers.
+    2. npm i react-router-dom
+      This is a library for React that enables routing in our  single-page applications.    
+    3. npm i dotenv
+      It is a tool used to manage environment variables in  programming languages, and it can be used for a variety of purposes, including:
+        1. Centralized configuration
+          It centralizes configuration management into a single file, making it easier to manage and less likely to become messy. 
+        2. Improved security
+          It stores sensitive information like API keys and database credentials in a .env file, keeping them out of the code and version control. 
+        3. Environment switching
+          Makes it easier to switch between different environments, like development, testing, and production.
+        4. Simplified deployment
+          Makes it easier to deploy applications to different hosting environments by allowing you to configure environment-specific settings. 
+        5. Maintainability
+          It separates configuration values from the code logic, making the code cleaner and easier to maintain. 
+    4. npm i moment
+      It is a JavaScript library used for parsing, validating, manipulating, and displaying dates and times in a simplified way. 
+      It provides a wide range of functionalities, making it much easier to work with dates in JavaScript.
+      Some common use cases for moment.js include:
+        1. Formatting dates:
+          It allows us to easily format dates into various human-readable formats.
+        2. Parsing dates:
+          We can parse dates from strings in different formats, ensuring consistent date representations.
+        3. Manipulating dates:
+          It provides functions for adding, subtracting, and modifying dates, making calculations with dates straightforward.
+        4. Relative time:
+          We can easily display relative time (e.g., "2 days ago", "in 5 hours") using moment.js.
+        5. Time zone support:
+          With the moment Timezone plugin, we can handle time zone conversions and display dates in different time zones.
+      Note: We can use also other alternative libraries such as:
+        1. Luxon: 
+            A modern and lightweight date and time manipulation library.
+        2.  Day.js: 
+            A smaller and faster alternative to moment.js with a similar API.
+        3. Date-fns: 
+           A modular library with a focus on functional programming and tree-shaking.   
+  4. API usage 
+  ************ 
+    We used youtube data API for this project using the following the procedures
+    1. create account and obtain API key by following the documentation 
+      link: https://developers.google.com/youtube/v3/getting-started
+    2. Login and search for data
+      link: https://developers.google.com/youtube/v3/docs
+    3. BaseURL
+      - On the left side section of page go to Overview & click on it and read all information under here before proceed to the next steps
+      - baseUrl = https://www.googleapis.com/youtube/v3
+      -every other path will be constructed with this baseURL 
+        - After finish reading go ahead now to the next steps
+      
+    4. Searching for VideoCategories data 
+      - On the left side section of page go to VideoCategories & click on it then click on list   
+      - on the middle section of page, under Use cases click on list 
+      - on right side section of under request parameters fill out the necessary parameters (like part: snippet, regionCode: US, ) and click on Execute button
+      - you are asked to choice email account and allow to open data in API's Explorer
+      - After you allowed  data and url link will displayed on APIs Explorer
+      - check the data which contains video category id with title name and we gonna use later on   
+        => videoCategoriesId=? we gonna use it as props   
+    5. Searching for Videos  
+      - on left side section of page go to Videos & click on it then click on list
+      - on middle section of page, under Use cases click on list(most popular videos)    
+      - on right side section of page under request parameters fill out the necessary parameters (like part: use given default, chart: mostPopular, regionCode: US, maxResults: 50, videoCategoryId: 0 ) and click on Execute button 
+      - check the data and copy  url link displayed on APIs Explorer.
+      - save the url link.
+    6. Searching for channels
+       - on left side section of page go to Channels & click on it then click on list
+       - on middle section of page, under Use cases click on list(by channel ID)    
+       - on right side section of page under request parameters click on Execute button 
+       - check the data and copy  url link displayed on APIs Explorer.
+       - save the url link.
+         => add VideoId=? from useParams
+    7. Searching for Comments
+       - on left side section of page go to CommentThreads & click on it then click on list
+       - on middle section of page, under Use cases click on list(by video ID)    
+       - on right side section of page under request parameters click on Execute button 
+          - Note:  tick only on API key button to generate data
+       - check the data and copy  url link displayed on APIs Explorer.
+       - save the url link.
+          => add VideoId=? from useParams
+  5. Work flow (Design)
+  ************
+   page contents:
+   1. Home page
+      Header section, sidebar section  and video list display on this page looks like real youtube channel
+      => open Home_page.jpg
+   2. Video page
+      Header section, videoPlay, comments and recommended videos display on this page again it looks like youtube video play.
+      => open Video_page.jpg 
+  6.Push to GitHub
+  ****************
+   - on progress
+  7. Deploy
+  *********
+   -on progress
